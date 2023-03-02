@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hashing Table</title>
+    <script>
+        class hashTable {
+            constructor(s = 8) { this.bucket = new Array(s); this.s = s; }
+
+            hash(key) {
+                let sum = 0;
+                for (let i = 0; i < key.length; ++i) {
+                    sum += key.charCodeAt(i);
+                }
+                let hash = sum % this.size;
+
+                return hash;
+
+            }
+            insert(key, value) {
+                let h = this.hash(key);;
+                // if (!this.bucket[h]) {
+                //     this.bucket[h] = [];
+                // }
+
+                // this.bucket[h].push([key, value])
+                return this.bucket[h] = value;
+
+            }
+            search() {
+                let h = this.hash(key)
+                if (!this.bucket[h]) {
+                    // console.log("Out of Index")
+                    return null;
+                }
+                for (let i of this.bucket[h]) {
+                    return i[1];
+                }
+
+            }
+        }
+
+        const newInst = new hashTable(9);
+        newInst.insert('101', 'Anuj');
+        newInst.insert('102', 'Shakul');
+        newInst.insert('103', 'Raj');
+        newInst.insert('301', 'Shreyu');
+
+        // console.log(newInst.bucket);
+        console.log(newInst);
+
+    </script>
+</head>
+
+<body>
+    <h1>Hashing Table</h1>
+</body>
+
+</html>
